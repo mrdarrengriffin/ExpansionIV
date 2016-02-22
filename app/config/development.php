@@ -3,7 +3,7 @@
 return [
 	'app' => [
 		'name' => '#app.name',
-		'url' => 'http://localhost/slimTemplate',
+		'url' => 'http://localhost/GitHub/ExpansionIV',
 		'hash' => [
 			'algo' => PASSWORD_BCRYPT,
 			'cost' => 10
@@ -12,6 +12,12 @@ return [
 	'maintenance' => [
 		'enabled' => false,
 		'allowed_ips' => ['192.168.0.1','192.168.0.5','::1'],
+	],
+	'social' => [
+		'reddit' => [
+			'enabled' => false,
+			'subreddit' => 'expansion',
+		],
 	],
 	'db' => [
 		'driver' => 'mysql',
