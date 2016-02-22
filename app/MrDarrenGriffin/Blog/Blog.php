@@ -21,10 +21,4 @@ Class Blog extends Eloquent
     return $this->hasOne('MrDarrenGriffin\User\User','id','user_id');
   }
 
-	public function getAttributeByName($attribute){
-		$attributes = json_decode($this->attributes['attributes'],true);
-		if(isset($attributes[$attribute])){return $attributes[$attribute]; }
-		return false;
-	}
-
 }

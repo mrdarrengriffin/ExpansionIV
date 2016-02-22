@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS `blog` (
   `enabled` int(1) unsigned NOT NULL DEFAULT '0',
   `title` varchar(255) DEFAULT NULL,
   `content` longtext,
-  `attributes` longtext,
+  `redditLink` varchar(255) DEFAULT NULL,
   `timestamp_created` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

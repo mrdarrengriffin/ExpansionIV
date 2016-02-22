@@ -53,8 +53,8 @@
     <div class="blog-content">{{ b.content | raw }}</div>
     <div class="blog-item-footer">
 
-      {% if config.get('social.reddit.enabled') and b.getAttributeByName('reddit-link') %}
-      <span class="blog-discuss-reddit"><a href="{{ b.getAttributeByName('reddit-link') }}">Discuss this post on Reddit</a></span>
+      {% if config.get('social.reddit.enabled') and b.redditLink %}
+      <span class="blog-discuss-reddit"><a href="{{ b.redditLink }}">Discuss this post on Reddit</a></span>
       {% endif %}
     </div>
   </div>
