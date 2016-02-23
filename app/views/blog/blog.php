@@ -50,16 +50,14 @@
   {% for b in blogItems %}
   <div class="blog-item">
     <div class="blog-heading">
-      <span class="blog-title">{{ b.title }}</span>
-      <span class="blog-subtitle">posted by <strong>{{ b.user.username }}</strong> on <strong>{{ b.timestamp_created | date("F jS, Y") }}</strong> at <strong>{{ b.timestamp_created | date("H:ia") }}</strong></span>
+      <h2 class="blog-title">{{ b.title }}</h2>
+      posted by <strong>{{ b.user.username }}</strong> on <strong>{{ b.timestamp_created | date("F jS, Y") }}</strong> at <strong>{{ b.timestamp_created | date("H:ia") }}</strong>
+      <!-- <small>posted by <strong>{{ b.user.username }}</strong> on <strong>{{ b.timestamp_created | date("F jS, Y") }}</strong> at <strong>{{ b.timestamp_created | date("H:ia") }}</strong></small> -->
     </div>
-    <div class="blog-content">{{ b.content | raw }}</div>
-    <div class="blog-item-footer">
-
-      {% if config.get('social.reddit.enabled') and b.redditLink %}
-      <span class="blog-discuss-reddit"><a href="{{ b.redditLink }}">Discuss this post on Reddit</a></span>
-      {% endif %}
+    <div class="blog-content">
+      {{ b.content | raw }}
     </div>
+    <hr>
   </div>
   {% endfor %}
 </div>

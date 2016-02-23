@@ -119,3 +119,8 @@ hr{
 span.required{
 	color:red;
 }
+.blog-title{display:inline-block;}
+h2.blog-title small{font-size:14px;}
+.blog-content p:not(last-of-type){
+	margin-bottom:0;
+}
