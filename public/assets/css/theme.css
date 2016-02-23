@@ -116,3 +116,6 @@ hr{
 	padding-right:25px;
 	padding-left:10px;
 }
+span.required{
+	color:red;
+}
