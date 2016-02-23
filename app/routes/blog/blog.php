@@ -10,13 +10,15 @@ $app->post('/blog/create-post',function() use ($app){
   $request = $app->request;
   $v = $app->validation;
   $v->validate([
-    'title' => [$request->post('title'),'required'],
-    'content' => [$request->post('content'),'required']
+    'blog-title' => [$request->post('blog-title'),'required|max(255)'],
+    'blog-content' => [$request->post('blog-content'),'required'],
+    'blog-reddit-link' => [$request->post('blog-reddit-link'),'max(255)'],
   ]);
   if($v->passes()){
     $post = new Blog();
-    $post->title = $request->post('title');
-    $post->content = $request->post('content');
+    $post->title = $request->post('blog-title');
+    $post->content = $request->post('blog-content');
+    $post->redditLink = $request->post('blog-reddit-link');
     $post->enabled = 1;
     $post->user_id = $app->auth->id;
     $post->timestamp_created = time();
@@ -24,8 +26,10 @@ $app->post('/blog/create-post',function() use ($app){
     $app->flash('success','Post created successfully');
     $app->response->redirect($app->urlFor('blog.home'));
   }else{
+    $posts = Blog::with('user')->where('enabled',1)->get();
     $app->render('blog/blog.php',[
       'errors' => $v->errors(),
+      'blogItems' => $posts,
       'request' => $request
     ]);
   }

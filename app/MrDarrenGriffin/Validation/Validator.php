@@ -19,25 +19,35 @@ class Validator extends Violin{
 
 		$this->addFieldMessages([
 			'email' => [
-				'uniqueEmail' => "Email already in use."
+				'uniqueEmail' => "Email already in use.",
 			],
 			'username' => [
-				'uniqueUsername' => "Username already in use."
+				'uniqueUsername' => "Username already in use.",
 			],
 			'password' => [
-				'min' => "Password must be more than 6 characters"
+				'min' => "Password must be more than 6 characters",
 			],
 			'new_password' => [
-				'min' => "Password must be more than 6 characters"
+				'min' => "Password must be more than 6 characters",
 			],
 			'new_password_confirm' => [
-				'min' => "Password must be more than 6 characters"
+				'min' => "Password must be more than 6 characters",
 			],
+			'blog-title' => [
+				'max' => "You can only use 255 characters",
+				'required' => "You must enter a title for the blog post",
+			],
+			'blog-reddit-link' => [
+				'max' => 'Reddit shortlinks are not that long, hence the SHORT in shortlink :)',
+			],
+			'blog-content' => [
+				'required' => 'Content is required for a blog post',
+			]
 		]);
 
 		$this->addRuleMessages([
 			'matchesCurrentPassword' => 'Current password incorrect.',
-			'required' => "This is required"
+			'required' => "This is required",
 
 		]);
 	}

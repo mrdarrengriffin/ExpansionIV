@@ -10,29 +10,30 @@
       <div class="panel-heading">Create Blog Post</div>
       <div class="panel-body">
         <div class="form-group">
-          <label for="title">Post Title</label>
-          <input type="text" class="form-control char-count" data-limit='255' name="title" id="title" required>
-          {% if errors.first('title') %}This field is required{% endif %}
+          <label for="blog-title">Post Title</label>
+          <input type="text" class="form-control char-count" data-limit='255' name="blog-title" id="blog-title" required value="{{ request.post('blog-title') }}">
+          <span class="help-block">{% if errors.first('blog-title') %}{{ errors.first('blog-title') }}{% endif %}</span>
         </div>
         <div class="form-group">
-          <label for="ckeditor">Content</label>
-          <textarea name="content" id="ckeditor" required></textarea>
-          {% if errors.first('content') %}This field is required{% endif %}
+          <label for="blog-ckeditor">Content</label>
+          <textarea name="blog-content" id="ckeditor" required></textarea>
+          <span class="help-block">{% if errors.first('blog-content') %}{{ errors.first('blog-content') }}{% endif %}</span>
         </div>
         {% if config.get('social.reddit.enabled') %}
         <div class="form-group">
-          <label for="reddit-link">Reddit Discussion URL</label>
-          <input type="text" class="form-control char-count" data-limit='255' name="reddit-link" id="reddit-link" placeholder="e.g. https://redd.it/3i2ffz" required>
+          <label for="blog-reddit-link">Reddit Discussion URL</label>
+          <input type="text" class="form-control char-count" data-limit='255' name="blog-reddit-link" id="blog-reddit-link" placeholder="e.g. https://redd.it/3i2ffz">
         </div>
-        {% if errors.first('reddit-link') %}This field is required{% endif %}
+        <span class="help-block">{% if errors.first('blog-reddit-link') %}{{ errors.first('blog-reddit-link') }}{% endif %}</span>
+        {% endif %}
       </div>
-      {% endif %}
+
+      <div class="panel-footer text-right">
+        <input type="hidden" name="{{ csrf_key }}" value="{{ csrf_token }}">
+        <input type="submit" class="btn btn-sm btn-success" value="Create Post">
+      </div>
     </div>
-    <div class="panel-footer text-right">
-      <input type="hidden" name="{{ csrf_key }}" value="{{ csrf_token }}">
-      <input type="submit" class="btn btn-sm btn-success" value="Create Post">
-    </div>
-  </div>
+
 </form>
 <hr>
 {% endif %}

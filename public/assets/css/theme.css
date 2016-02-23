@@ -100,9 +100,6 @@ hr{
 .panel-footer .btn.btn-sm{
 	margin:-11px;
 }
-.char-count-container{
-
-}
 .char-count-text{
 	float:right;
 	margin:-14px 4px 0 0;
@@ -110,6 +107,7 @@ hr{
 	text-align:right;
 	text-transform: lowercase;
 	z-index:10000;
+	cursor:help;
 }
 .char-count-text .chars-remaining{
 	font-weight:700;
