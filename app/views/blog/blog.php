@@ -5,7 +5,7 @@
 {% block content %}
 <div class="blog-container">
   {% if auth.hasPermission('blog.create-posts') %}
-  <form action="{{ urlFor('blog.create-post.post') }}" method="post">
+  <form action="{{ urlFor('blog.create-post.post') }}" method="post" autocomplete="off">
     <div class="panel panel-default">
       <div class="panel-heading">Create Blog Post</div>
       <div class="panel-body">
@@ -20,7 +20,7 @@
           {% if errors.first('content') %}This field is required{% endif %}
         </div>
         {% if config.get('social.reddit.enabled') %}
-        <div class="form-group" style="margin-bottom:5px;">
+        <div class="form-group char-count" data-limit='255'>
           <label for="reddit-link">Reddit Discussion URL</label>
           <div class="input-group">
             <span class="input-group-addon">Reddit Thread Shortlink</span>

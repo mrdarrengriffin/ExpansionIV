@@ -1,1 +1,9 @@
-This is a development repo for the new Minecraft server website for Expansion. 1 Branch is design, the other is functionality.
+Commiting:
+
+Name suffixes:
+(C) - Controller
+(R) - Route
+(V) - View
+
+Created Example CRV - This means that you have created the controller, the route and the view.
+Created Example CRV-S - This means that you have created the CRV but you have a SQL structure file to execute.

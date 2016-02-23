@@ -3,11 +3,13 @@
 namespace MrDarrenGriffin\User;
 
 use Illuminate\Database\Eloquent\Model as Eloquent;
+use MrDarrenGriffin\Cache\Cache;
 
 Class User extends Eloquent
 {
 	protected $table = 'users';
 	public $timestamps = false;
+	public $cache;
 	protected $fillable = [
 		'username',
 		'first_name',
@@ -25,6 +27,10 @@ Class User extends Eloquent
 		'created_at',
 		'updated_at',
 	];
+
+	public function __construct(){
+		$this->cache = new Cache('cache','User');
+	}
 
 	public function getFullName(){
 		if(!$this->first_name || !$this->last_name){
@@ -68,7 +74,12 @@ Class User extends Eloquent
 
 	public function getAvatarUrl($options = []){
 		$size = isset($options['size']) ? $options['size'] : 45;
-		return 'http://www.gravatar.com/avatar/'.md5($this->email).'?s='.$size.'&d=identicon';
+		$url = 'http://www.gravatar.com/avatar/'.md5($this->email).'?size='.$size.'&d=identicon';
+		$filename = md5($this->email)."-".$size.".jpeg";
+		if(!$this->cache->isInCache($filename)){
+			$this->cache->store($url,$filename);
+		}
+		return $this->cache->retrieve($filename);
 	}
 
 	public function updateRememberCredentials($identifier,$token){
