@@ -74,12 +74,7 @@ Class User extends Eloquent
 
 	public function getAvatarUrl($options = []){
 		$size = isset($options['size']) ? $options['size'] : 45;
-		$url = 'http://www.gravatar.com/avatar/'.md5($this->email).'?size='.$size.'&d=identicon';
-		$filename = md5($this->email)."-".$size.".jpeg";
-		if(!$this->cache->isInCache($filename)){
-			$this->cache->store($url,$filename);
-		}
-		return $this->cache->retrieve($filename);
+		return $url = 'http://www.gravatar.com/avatar/'.md5($this->email).'?size='.$size.'&d=identicon';
 	}
 
 	public function updateRememberCredentials($identifier,$token){
