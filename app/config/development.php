@@ -15,8 +15,16 @@ return [
 	],
 	'social' => [
 		'reddit' => [
-			'enabled' => false,
+			'enabled' => true,
 			'subreddit' => 'expansion',
+		],
+		'instagram' => [
+			'enabled' => true,
+			'username' => 'expansion_mc',
+		],
+		'twitter' => [
+			'enabled' => true,
+			'username' => 'MC_Expansion',
 		],
 	],
 	'db' => [
