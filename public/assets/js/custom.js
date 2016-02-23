@@ -6,20 +6,11 @@ $(document).ready(function(){
 });
 
 function parseCharCounts(){
-	$(".char-count").each(function(){
-		if($(this).find(".input-group").length != 0){
-			$(this).children('.input-group').after("<span class='help-block char-count-text'><span class='chars-remaining'>"+$(this).data('limit')+"</span></span>");
-		}else{
-			$(this).children('input').after("<span class='help-block char-count-text'><span class='chars-remaining'>"+$(this).data('limit')+"</span></span>");
-		}
+	$("input.char-count").each(function(){
+		$(this).after("<span class='help-block char-count-text'><span class='chars-remaining'  title='Characters Remaining'>"+$(this).data('limit')+"</span></span>");
+		$(this).attr('maxlength', $(this).data('limit'));
 	});
 	$(".char-count").on('input',function(){
-		if($(this).find(".input-group").length != 0){
-		var input = $(this).children('.input-group').children('input');
-	}else{
-		var input = $(this).children('input');
-	}
-		$(input).attr('maxlength', $(this).data('limit'));
-		$(this).find('.chars-remaining').html($(this).data('limit') - $(input).val().length);
+		$(this).parent().find('.chars-remaining').html($(this).data('limit') - $(this).val().length);
 	});
 }

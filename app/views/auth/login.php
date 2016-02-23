@@ -5,11 +5,11 @@
 <div class="row">
 	<div class="col-md-6">
 		<form action="{{ urlFor('login.post')}}" method="post" autocomplete="off" class="form-horizontal">
-			
+
 			<div class="form-group">
 				<label for="username" class="col-sm-4 control-label">Username</label>
 				<div class="col-sm-8">
-					<input type="text" class="form-control" id="username" name="username">
+					<input type="text" class="form-control char-count" data-limit='16' id="username" name="username">
 					{% if errors.has('username') %}
 					<span id="h1" class="help-block">{{ errors.first('username')}}</span>
 					{% endif %}
@@ -27,10 +27,10 @@
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-8">
 					<input type="checkbox" name="remember" id="remember"> Remember Me
-					
+
 				</div>
 			</div>
-			
+
 			<div class="form-group">
 				<div class="col-sm-offset-4 col-sm-8">
 					<input type="hidden" name="{{ csrf_key }}" value="{{ csrf_token }}">
