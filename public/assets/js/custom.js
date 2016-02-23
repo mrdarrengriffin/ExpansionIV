@@ -8,9 +8,9 @@ $(document).ready(function(){
 function parseCharCounts(){
 	$(".char-count").each(function(){
 		if($(this).find(".input-group").length != 0){
-			$(this).children('.input-group').after("<span class='help-block char-count-text'><span class='chars-remaining'>"+$(this).data('limit')+"</span> characters remaining</span>");
+			$(this).children('.input-group').after("<span class='help-block char-count-text'><span class='chars-remaining'>"+$(this).data('limit')+"</span></span>");
 		}else{
-			$(this).children('input').after("<span class='help-block char-count-text'><span class='chars-remaining'>"+$(this).data('limit')+"</span> characters remaining</span>");
+			$(this).children('input').after("<span class='help-block char-count-text'><span class='chars-remaining'>"+$(this).data('limit')+"</span></span>");
 		}
 	});
 	$(".char-count").on('input',function(){

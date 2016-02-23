@@ -103,10 +103,16 @@ hr{
 .char-count-text{
 	position: absolute;
 	right:0;
+	margin:-14px 4px 0 0;
 	font-size:10px;
 	text-align:right;
 	text-transform: lowercase;
+	z-index:10000;
 }
 .char-count-text .chars-remaining{
 	font-weight:700;
+}
+.char-count input{
+	padding-right:25px;
+	padding-left:10px;
 }
